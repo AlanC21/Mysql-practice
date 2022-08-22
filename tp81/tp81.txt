@@ -1,0 +1,10 @@
+a) Crea la tabla llamada Marcas que contiene los campos IDMarca con tipo de dato SmallInt, NombreMarca con tipo de dato Char de tamaño 10 caracteres, NombreCiudad con tipo de dato Char con tamaño de 60 caracteres. La clave primaria es IDMarca.
+b) Crea la tabla llamda Coche que contiene los campos codcoche con tipo de dato smallInt, nombre con tipo de cato Char con tamaño de 15 caracteres, modelo con tipo de datos Char con tamaño de 10 caracteres. La clave primaria es codcoche.
+c) Crea la tabla Marco que contiene los campos IdMarca con tipo de dato SmallInt, codcoche con tipo de dato SmallInt, La clave primaria es cifm y codcoche. Relaciona cifm con la tabla Marca. Relaciona codcoche con la tabla Coche.
+d) Inserta dentro de la tabla Marcas los valores 1, 'vw', 'Mar del Plata'. 2, 'renault', 'Rosario'. 3, 'fiat', 'Cordoba'. 4, 'ford', 'Neuquen'.
+e) Seleciona todos los campos desde la tabla Marcas.
+f) Seleciona los campos nombre y ciudad desde la tabla Marcas.
+g) Seleciona los campos nombre y ciudad desde la tabla Marcas cuando IdMarca es igual a 2.
+h) Seleciona los campos NombreMarca y ciudad desde Marcas cuando ciudad es igual a 'Neuquen'.
+i) Seleciona los campos nombre y ciudad desde Marcas cuando ciudad lo compara con 'S%'.
+j) Actualiza la tabla Marcas y le establece ciudad que sea igual a 'Nuequen' cuando ciudad es igual a 'Jujuy'.
