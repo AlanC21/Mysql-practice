@@ -29,14 +29,14 @@
 <body>
 
   <?php
-  $mysql = new mysqli("localhost", "root", "Zekon1452", "lindavista");
+  $mysql = new mysqli("localhost", "root", "", "lindavista");
   if ($mysql->connect_error)
     die("Problemas con la conexión a la base de datos");
 
   $registros = $mysql->query("select id_vivienda, tipo_vivienda, zona_vivienda, 
     direccion_vivieda, ndormitorios_vivienda, precio_vivienda, tamano_vivienda,
     extras_vivienda, foto_vivienda, observaciones_vivienda
-    from viviendas where id_vivienda=$_REQUEST[codigo]") or
+    from viviendas order by precio_vivienda asc[codigo]") or
     die($mysql->error);
 
   if ($reg = $registros->fetch_array()) {
