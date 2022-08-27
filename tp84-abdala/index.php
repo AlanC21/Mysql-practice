@@ -1,86 +1,83 @@
-<!doctype html> 
-<html> 
-<head> 
-  <title>Listado de articulos</title> 
-  <style> 
-  .tablalistado { 
-    border-collapse: collapse; 
-    box-shadow: 0px 0px 8px #000; 
-    margin:20px; 
-  } 
-  .tablalistado th{   
-    border: 1px solid #000; 
-    padding: 5px; 
-    background-color:#ffd040;    
-  }   
-  .tablalistado td{   
-    border: 1px solid #000; 
-    padding: 5px; 
-    background-color:#ffdd73;    
-  } 
-  </style> 
-</head>   
-<body> 
-   
-  <?php 
- $mysql=new mysqli("localhost","root","","lindavista"); 
- if ($mysql->connect_error) 
-   die("Problemas con la conexion a la base de datos"); 
-   
-    $registros=$mysql->query("select * from viviendas") or 
- 
-      die($mysql->error); 
-   
-    echo '<table class="tablalistado">'; 
-    echo '<tr><th>ID vivienda</th><th>Tipo vivienda</th><th>Zona vivienda</th><th>Direccion vivienda</th><th>Dormitorios</th><th>Precio</th><th>Tamaño</th><th>Extras</th><th>Foto</th><th>Observaciones</th><th></th><th></th></tr>'; 
-    while ($reg=$registros->fetch_array()) 
-    { 
-      echo '<tr>'; 
-      echo '<td>'; 
-      echo $reg['id_vivienda']; 
-      echo '</td>';    
-      echo '<td>'; 
-      echo $reg['tipo_vivienda'];    
-      echo '</td>';    
-      echo '<td>'; 
-      echo $reg['zona_vivienda'];    
-      echo '</td>';    
-      echo '<td>'; 
-      echo $reg['direccion_vivieda'];    
-      echo '</td>'; 
-      echo '<td>'; 
-      echo $reg['ndormitorios_vivienda']; 
-      echo '</td>'; 
-      echo '<td>'; 
-      echo $reg['precio_vivienda']; 
-      echo '</td>'; 
-      echo '<td>'; 
-      echo $reg['tamano_vivienda']; 
-      echo '</td>'; 
-      echo '<td>'; 
-      echo $reg['extras_vivienda']; 
-      echo '</td>'; 
-      echo '<td>'; 
-      echo $reg['foto_vivienda']; 
-      echo '</td>'; 
-      echo '<td>'; 
-      echo $reg['observaciones_vivienda']; 
-      echo '</td>'; 
-      echo '<td>'; 
-      echo '<a href="delete.php?id_vivienda='.$reg['id_vivienda'].'">Borra?</a>'; 
-      echo '</td>'; 
-      echo '<td>'; 
-      echo '<a href="modify1.php?id_vivienda='.$reg['id_vivienda'].'">Modifica?</a>'; 
-      echo '</td>';       
-      echo '</tr>';    
-    }  
-    echo '<tr><td colspan="12">'; 
-    echo '<a href="insert1.php">Agrega un nuevo articulo?</a>'; 
-    echo '</td></tr>'; 
-    echo '<table>';  
-  
-    $mysql->close(); 
- 
-  ?>   
-</body> 
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Viviendas</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style>
+        .table td{
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-striped">
+                    <thead class="thead-inverse">
+                        <tr>
+                            <th>ID Vivienda</th>
+                            <th>Tipo</th>
+                            <th>Zona</th>
+                            <th>Direccion</th>
+                            <th>Dormitorios</th>
+                            <th>Precio</th>
+                            <th>Tamaño</th>
+                            <th>Extras</th>
+                            <th>Imagen</th>
+                            <th>Observaciones</th>
+                            <th>Borrar</th>
+                            <th>Modificar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        include_once "db.php";
+                        $con = mysqli_connect($db_host, $db_user, $db_pass, $db_database);
+                        $query = "SELECT * FROM viviendas;";
+                        $res = mysqli_query($con, $query);
+                        while ($row = mysqli_fetch_assoc($res)) {
+                        ?>
+                            <tr>
+                                <td><?php echo $row['id_vivienda']; ?></td>
+                                <td><?php echo $row['tipo_vivienda']; ?></td>
+                                <td><?php echo $row['zona_vivienda']; ?></td>
+                                <td><?php echo $row['direccion_vivieda']; ?></td>
+                                <td><?php echo $row['ndormitorios_vivienda']; ?></td>
+                                <td><?php echo $row['precio_vivienda']; ?></td>
+                                <td><?php echo $row['tamano_vivienda']; ?></td>
+                                <td><?php echo $row['extras_vivienda']; ?></td>
+                                <td>
+                                    <img width="100" src="data:jpg; ?>;base64,<?php echo  base64_encode($row['foto_vivienda']); ?>">
+                                </td>
+                                <td><?php echo $row['observaciones_vivienda']; ?></td>
+                              <?php echo '<td><a href="delete.php?id_vivienda='.$row['id_vivienda'].'">Borrar?</a>'; ?>
+                              <?php echo '<td><a href="modify1.php?id_vivienda='.$row['id_vivienda'].'">Modificar?</a>'; ?>
+                            </tr>
+                        <?php
+                        }
+                        ?>
+                    </tbody>
+                    <tr><td colspan="12">
+                    <a href="insert1.php">Agrega un nuevo articulo</a>
+                    </td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
 </html>
