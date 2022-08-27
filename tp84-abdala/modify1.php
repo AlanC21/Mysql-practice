@@ -22,7 +22,7 @@
     <div class="row">
       <div class="col-12">
         <?php
-        $mysql = new mysqli('localhost','458236','Zekon1452','458236');
+        $mysql = new mysqli('localhost','root','','lindavista');
         if ($mysql->connect_error)
           die("Problemas con la conexion a la base de datos");
 
@@ -76,7 +76,7 @@
             <?php
             function enum_values($table, $field)
             {
-              $mysql = new mysqli('localhost','458236','Zekon1452','458236');
+              $mysql = new mysqli('localhost','root','','lindavista');
               if ($mysql->connect_error)
                 die("Problemas con la conexion a la base de datos");
               $type = $mysql->query("SHOW COLUMNS FROM viviendas LIKE 'ndormitorios_vivienda'")->fetch_object()->Type;
