@@ -27,7 +27,7 @@
             Tipo vivienda:
             <?php
             //get enum value from database 
-            $mysql = new mysqli('localhost','458236','Zekon1452','458236');
+            $mysql = new mysqli('localhost','root','','lindavista');
             if ($mysql->connect_error)
               die("Problemas con la conexion a la base de datos");
             $registros = $mysql->query("select COLUMN_TYPE from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME='viviendas' and COLUMN_NAME='tipo_vivienda'") or
@@ -44,7 +44,7 @@
             Zona vivienda:
             <?php
             //get enum value from database 
-            $mysql = new mysqli('localhost','458236','Zekon1452','458236');
+            $mysql = new mysqli('localhost','root','','lindavista');
             if ($mysql->connect_error)
               die("Problemas con la conexion a la base de datos");
             $registros = $mysql->query("select COLUMN_TYPE from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME='viviendas' and COLUMN_NAME='zona_vivienda'") or
@@ -65,7 +65,7 @@
             Numero de dormitorios:
             <?php
             //get enum value from database with number 3 like default value 
-            $mysql = new mysqli('localhost','458236','Zekon1452','458236');
+            $mysql = new mysqli('localhost','root','','lindavista');
             if ($mysql->connect_error)
               die("Problemas con la conexion a la base de datos");
             $registros = $mysql->query("select COLUMN_TYPE from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME='viviendas' and COLUMN_NAME='ndormitorios_vivienda'") or
@@ -93,7 +93,7 @@
             Extras vivienda:
             <?php
             //get enum value from database 
-            $mysql = new mysqli('localhost','458236','Zekon1452','458236');
+            $mysql = new mysqli('localhost','root','','lindavista');
             if ($mysql->connect_error)
               die("Problemas con la conexion a la base de datos");
             $registros = $mysql->query("select COLUMN_TYPE from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME='viviendas' and COLUMN_NAME='extras_vivienda'") or
